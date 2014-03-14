@@ -15,6 +15,10 @@ class TestsController < ApplicationController
   # GET /tests/new
   def new
     @test = Test.new
+    3.times do
+      question = @test.questions.build
+      4.times { question.answers.build }
+    end
   end
 
   # GET /tests/1/edit
@@ -69,6 +73,6 @@ class TestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
-      params.require(:test).permit(:name, questions_attributes: [:id, :name], answers_attributes: [:id, :name, :is_right])
+      params.require(:test).permit(:name, questions_attributes: [:id, :name, answers_attributes: [:id, :name, :is_right]])
     end
 end

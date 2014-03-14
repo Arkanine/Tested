@@ -16,10 +16,8 @@
     <%= f.text_field :name %><br/>
   </div>
 
-  <%= f.fields_for :questions, @test.questions_for_form do |question| %>
-    <%= question.label :name, 'Question' %><br/>
-    <%= question.text_field :name %><br/>
-    <%= question.hidden_field :test_id, :value => @test.id %><br/>
+  <%= f.fields_for :questions do |builder| %>
+    <%= render 'question_fields', :f => builder %>
   <% end %>
 
   <div class="actions">
