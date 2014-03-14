@@ -1,0 +1,31 @@
+<h1>Listing user_results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Test</th>
+      <th>Score</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_results.each do |user_result| %>
+      <tr>
+        <td><%= user_result.user_id %></td>
+        <td><%= user_result.test_id %></td>
+        <td><%= user_result.score %></td>
+        <td><%= link_to 'Show', user_result %></td>
+        <td><%= link_to 'Edit', edit_user_result_path(user_result) %></td>
+        <td><%= link_to 'Destroy', user_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User result', new_user_result_path %>
