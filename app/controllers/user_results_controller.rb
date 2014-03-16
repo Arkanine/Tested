@@ -19,6 +19,8 @@ class UserResultsController < ApplicationController
 
   # GET /user_results/1/edit
   def edit
+    @user_results = UserResult.all
+    @tests = Test.all
   end
 
   # POST /user_results
@@ -40,15 +42,12 @@ class UserResultsController < ApplicationController
   # PATCH/PUT /user_results/1
   # PATCH/PUT /user_results/1.json
   def update
-    respond_to do |format|
       if @user_result.update(user_result_params)
-        format.html { redirect_to @user_result, notice: 'User result was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to :back
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @user_result.errors, status: :unprocessable_entity }
+        render action: 'edit'
       end
-    end
+
   end
 
   # DELETE /user_results/1
@@ -69,6 +68,6 @@ class UserResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_result_params
-      params.require(:user_result).permit(:user_id, :test_id, :score)
+      params.require(:user_result).permit(:user_id, :question_id, :score)
     end
 end

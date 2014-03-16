@@ -1,0 +1,11 @@
+
+<% @user_results.each do |ur| %>
+        <%= form_for ur do |f| %>
+
+            <% ur.question.answers.each do |a| %>
+              <%= f.radio_button :score, a.id.to_i %>
+            <% end %>
+
+          <%= f.submit %>
+        <% end %>
+<% end %>

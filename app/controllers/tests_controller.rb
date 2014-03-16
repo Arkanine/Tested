@@ -14,6 +14,7 @@ class TestsController < ApplicationController
 
   # GET /tests/new
   def new
+    @answers = Answer.all
     @test = Test.new
     3.times do
       question = @test.questions.build
@@ -23,6 +24,7 @@ class TestsController < ApplicationController
 
   # GET /tests/1/edit
   def edit
+    @user_results = UserResult.all
   end
 
   # POST /tests
@@ -44,6 +46,7 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
+    @questions =  @test.questions.find(params[:id])
     respond_to do |format|
       if @test.update(test_params)
         format.html { redirect_to @test, notice: 'Test was successfully updated.' }
@@ -73,6 +76,6 @@ class TestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
-      params.require(:test).permit(:name, questions_attributes: [:id, :name, answers_attributes: [:id, :name, :is_right]])
+      params.require(:test).permit(:name, user_results_attributes: [:id, :score, :question_id], questions_attributes: [:id, :name, answers_attributes: [:id, :name, :is_right]])
     end
 end

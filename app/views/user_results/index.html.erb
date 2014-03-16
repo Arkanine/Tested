@@ -16,7 +16,7 @@
     <% @user_results.each do |user_result| %>
       <tr>
         <td><%= user_result.user_id %></td>
-        <td><%= user_result.test_id %></td>
+        <td><%= user_result.question_id %></td>
         <td><%= user_result.score %></td>
         <td><%= link_to 'Show', user_result %></td>
         <td><%= link_to 'Edit', edit_user_result_path(user_result) %></td>

@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140314135659) do
 
   create_table "user_results", force: true do |t|
     t.integer  "user_id"
-    t.integer  "test_id"
+    t.integer  "question_id"
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
