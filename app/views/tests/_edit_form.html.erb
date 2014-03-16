@@ -2,32 +2,36 @@
 
     <div class="field">
       <%= f.label :name, 'Test' %><br>
-      <%= f.text_field :name %><br/>
+      <%= f.text_field :name %><br/>                                                <% if @test.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@test.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+            <ul>
+              <% @test.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
     </div>
 
     <%= f.fields_for :questions do |question| %>
-
         <p>
           <%= question.label :name, 'Question' %><br/>
           <%= question.text_field :name %><br/>
         </p>
-
-        
         <%= question.fields_for :answers do |answer| %>
- 
-          
-            <%= answer.radio_button :is_right, value: @test.id %>
-        
+            <p>
+              Answer name:<%= answer.text_field :name %>
+              Right? <%= answer.check_box :is_right %>
+            </p>
         <% end %>
-        
-
     <% end %>
 
     <div class="actions">
       <%= f.submit %>
     </div>
 <% end %>
-
 
 
 

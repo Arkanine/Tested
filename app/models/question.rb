@@ -1,6 +1,5 @@
 class Question < ActiveRecord::Base
 	has_many :answers
-  has_many :user_results
 
   belongs_to :test
   accepts_nested_attributes_for :answers

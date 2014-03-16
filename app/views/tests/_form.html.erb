@@ -22,8 +22,8 @@
         </p>
         <%= question.fields_for :answers do |answer| %>
             <p>
-              <%= answer.label :name, "Answer" %>
-              <%= answer.text_field :name %>
+              Answer name:<%= answer.text_field :name %>
+              Right? <%= answer.check_box :is_right %>
             </p>
         <% end %>
   <% end %>

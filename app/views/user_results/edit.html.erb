@@ -4,11 +4,3 @@
 
 <%= link_to 'Show', @user_result %> |
 <%= link_to 'Back', user_results_path %>
-
-
-<% @user_results.each do |ur| %>
-    <p>
-      Question:<%= ur.question_id %>
-      Score:<%= ur.score %>
-    </p>
-<% end %>

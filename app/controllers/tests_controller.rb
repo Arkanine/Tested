@@ -76,6 +76,6 @@ class TestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
-      params.require(:test).permit(:name, user_results_attributes: [:id, :score, :question_id], questions_attributes: [:id, :name, answers_attributes: [:id, :name, :is_right]])
+      params.require(:test).permit(:name, user_results_attributes: [:id, :score, :test_id], questions_attributes: [:id, :name, answers_attributes: [:id, :name, :is_right, :question_id]])
     end
 end
