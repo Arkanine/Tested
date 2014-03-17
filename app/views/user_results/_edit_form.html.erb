@@ -1,13 +1,14 @@
+
 <%= simple_form_for @user_result do |f|  %>
 
-	<% @user_result.test.questions.each do |question| %>
-	    <%= f.simple_fields_for question do |q| %>
+    <% @user_result.test.questions.each do |question| %>
+        <%= f.simple_fields_for question do |q| %>
 
             <%= q.input :name, collection: (question.answers.map{|c| c.name}), :as => :radio_buttons %>
 
-	    <% end %>       
+        <% end %>
 
-	<% end %> <br>
+    <% end %> <br>
 
-	<%= f.submit %>
+    <%= f.submit %>
 <% end %>

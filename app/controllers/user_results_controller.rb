@@ -68,6 +68,6 @@ class UserResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_result_params
-      params.require(:user_result).permit(:user_id, :test_id, :score)
+      params.require(:user_result).permit(:user_id, :test_id, :score, questions_attributes: [:id, :name])
     end
 end
